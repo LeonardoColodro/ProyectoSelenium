@@ -51,5 +51,11 @@ public class CarritoDefinitions {
     @When("doy click en Check Credit")
     public void doyClickEnCheckCredit() {
         menu.clickCheckCredit(); //No da clik en el boton Check Credit Card
+        try {
+            Thread.sleep(6000);
+
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
     }
 }

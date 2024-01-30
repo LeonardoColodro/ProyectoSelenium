@@ -28,6 +28,7 @@ public class MenuPage {
     }
 
     public void clickCheckCredit() {
+        //wait.until(ExpectedConditions.elementToBeClickable(lnk_checkCredit)).click();
         lnk_checkCredit.click();
     }
 }
