@@ -37,7 +37,7 @@ public class CapturarDatosTarjetaPage {
             ventana++;
             driver.switchTo().window(identificador);
             System.out.println(ventana + " : " +identificador);
-           // wait.until(ExpectedConditions.visibilityOf(lbl_tarjeta));
+            // wait.until(ExpectedConditions.visibilityOf(lbl_tarjeta));
         }
     }
 
@@ -69,5 +69,4 @@ public class CapturarDatosTarjetaPage {
         driver.close();
         driver.switchTo().window((  ""));
     }
-
 }
