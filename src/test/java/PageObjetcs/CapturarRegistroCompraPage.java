@@ -13,7 +13,7 @@ import java.time.Duration;
 public class CapturarRegistroCompraPage {
     private WebDriver driver;
     private WebDriverWait wait;
-
+    protected static String orden;
     @FindBy(tagName = "h2") private WebElement lbl_validar;
     @FindBy(xpath = "//td[2]/h3/strong") private WebElement lbl_Orden;
     @FindBy(xpath = "//*[@class='button special']") private WebElement btn_Home;
@@ -32,7 +32,7 @@ public class CapturarRegistroCompraPage {
     }
 
     public void capturarOrden(){
-        lbl_Orden.getText();
+        orden=lbl_Orden.getText();
         System.out.println(lbl_Orden.getText());
     }
 

@@ -22,7 +22,7 @@ public class BalanceTarjetaPage {
     @FindBy(xpath = "//td[3]/b/font") private WebElement lbl_mes;
     @FindBy(xpath = "//td[4]/b/font") private WebElement lbl_anio;
     @FindBy(xpath = "//td[5]/b/font") private WebElement lbl_cvv;
-    @FindBy(xpath = "//td[6]/b/font") private WebElement lbl_id;
+    @FindBy(xpath = "//td[6]/b/font") private WebElement lbl_orden;
 
     public BalanceTarjetaPage(WebDriver d) {
         driver = d;
@@ -45,15 +45,18 @@ public class BalanceTarjetaPage {
         btn_Cart.click();
     }
 
-  //Clase06
     public void validarDatos(){
         wait.until(ExpectedConditions.visibilityOf(lbl_tarjeta));
         Assert.assertEquals(CapturarDatosTarjetaPage.tarjeta,lbl_tarjeta.getText());
         String monto=lbl_monto.getText().replace("$", "");
         String montototal= String.valueOf(ValidarTarjetaPage.total).replace(".0", "");
         Assert.assertEquals(montototal, monto);
-        //String mes =
-        //System.out.println("El numero de la tarjeta es: " + lbl_tarjeta.getText());
-        //System.out.println("El monto es: " + monto);
+        String mes = CapturarDatosTarjetaPage.mes.replaceFirst("^0+(?!$)", "");
+        //Reemplazar los ceros que estan a la izquierda
+        System.out.println("el mes es: " + mes);
+        Assert.assertEquals(mes, lbl_mes.getText());
+        Assert.assertEquals(CapturarDatosTarjetaPage.anio,lbl_anio.getText());
+        Assert.assertEquals(CapturarDatosTarjetaPage.cvv,lbl_cvv.getText());
+        Assert.assertEquals(CapturarRegistroCompraPage.orden,lbl_orden.getText());
     }
 }
