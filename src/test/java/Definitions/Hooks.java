@@ -2,6 +2,7 @@ package Definitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -11,7 +12,8 @@ public class Hooks {
 
     @Before //Inicializar el proceso y conectar el driver
     public static void setUp(){
-        System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
@@ -21,6 +23,6 @@ public class Hooks {
     @After
     public static void tearDown(){
         driver.manage().deleteAllCookies();
-        //driver.close();
+        driver.close();
     }
 }

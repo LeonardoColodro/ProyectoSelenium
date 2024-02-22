@@ -1,5 +1,6 @@
 package PageObjetcs;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,7 @@ import java.time.Duration;
 public class FormularioPage {
     private WebDriver driver;
     private WebDriverWait wait;
+    private Alert MensajeAlerta;
 
     @FindBy(xpath = "//*[@id='done']//following-sibling::label") private WebElement rdn_done;
     @FindBy(xpath = "//div[2]/label") private WebElement rdn_pending;
@@ -55,4 +57,13 @@ public class FormularioPage {
         txt_telephoneno.sendKeys(telefono);
     }
 
+    public void ClickEnviar(){
+        btn_enviar.click();
+    }
+
+    public void ObtenerMensajeAlerta(){
+        MensajeAlerta= driver.switchTo().alert();
+        System.out.println("El mensaje de la alerta es: "+ MensajeAlerta.getText());
+        MensajeAlerta.accept();
+    }
 }

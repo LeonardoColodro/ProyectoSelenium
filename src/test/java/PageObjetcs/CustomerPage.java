@@ -9,25 +9,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MenuTelecomPage {
+public class CustomerPage {
     private WebDriver driver;
     private WebDriverWait wait;
-    @FindBy (linkText = "Add Customer") private WebElement lnk_agregarCliente;
-    @FindBy (linkText = "Add Tariff Plan to Customer") private WebElement lnk_agregarCustomer;
+    protected static String customer;
+    @FindBy(tagName = "h3")
+    private WebElement lbl_customer;
+    @FindBy(xpath = "//a[@class='button']")
+    private WebElement btn_home;
 
-    public MenuTelecomPage(WebDriver d) {
+    public CustomerPage(WebDriver d) {
         driver = d;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // 30 segundos de espera usando Duration
         PageFactory.initElements(driver, this);
     }
 
-    public void ClickCliente(){
-        wait.until(ExpectedConditions.elementToBeClickable(lnk_agregarCliente));
-        lnk_agregarCliente.click();
+    public void CapturarCustomer() {
+        wait.until(ExpectedConditions.visibilityOf(lbl_customer));
+        customer=lbl_customer.getText();
     }
 
-    public void ClickAddCustomer(){
-        wait.until(ExpectedConditions.elementToBeClickable(lnk_agregarCustomer));
-        lnk_agregarCustomer.click();
+    public void ClickEnviar() {
+        btn_home.click();
     }
 }
